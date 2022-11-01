@@ -1,0 +1,83 @@
+database penado
+screen size 24 by 80
+{
+
+
+   Codigo [f000     ]           Grp sanguineo [f001                ]  
+   Nombre [f002                          ]Dir.[f003                          ]
+   Telf   [f004        ]F.Nac.[f005      ]Sexo[s]
+   E-mail [f007                ]      Casilla [f008                ]       
+   Pais Nac.[f009][d0                  ] Lugar nac.[f010][d2                 ]
+   Nac.1   [f011][d3                  ] Nac.2[f012][d4                        ]
+   Religion[f013][d5                  ]  F.Ingreso[f026      ]
+   Col. Origen[f027][d8                  ]               Llamadas atencion[v1]
+   Fec.ret.[f014      ] Motivo ret.[f015][d6                                 ]
+   Beca    [f016][d7                  ] Curso act.[f017] Grupo[f018] 
+   Gestion [f019] Estado act.[f020]    
+   Apoderado [f021 ][d10                                     ][v2]
+   Padre     [f022 ][d11                                     ][v3]
+   Madre     [f023 ][d12                                     ][v4]
+   Vive con  [f024                                              ]
+   Llamar a  [f025                                              ]
+}
+end
+
+tables
+   est, est_adj
+end
+
+attributes
+  f000 = est.reg, upshift, reverse, autonext, noentry;
+  f001 = est_adj.grpsan, upshift, reverse, autonext;
+  f002 = est.nombre, upshift, reverse, autonext;
+  f003 = est.direc, upshift, reverse, autonext;
+  f004 = est.telef, reverse, autonext;
+  f005 = est.fecha_nac, reverse, autonext;
+  s = est.sexo, upshift, reverse, autonext,
+      comments ="M=Masculino, F=Femenino", include=("M","F");
+  f007 = est.email, upshift, reverse, autonext;
+  f008 = est_adj.casill, reverse, autonext;
+  f009 = est.pais_nac, upshift, reverse, autonext;
+  f010 = est.dpto_nac, reverse, autonext; 
+  f011 = est.nacionalidad, reverse, autonext; 
+  f012 = est.nacionalida2, reverse, autonext; 
+  f013 = est.religion, reverse, autonext; 
+  f014 = est.fecha_ret, reverse, autonext; 
+
+  f015 = est.cod_ret, reverse, autonext; 
+  f016 = est_adj.beca, reverse, autonext; 
+  f017 = est.curso_act, reverse, autonext, noentry; 
+  f018 = est.grupo_act, reverse, autonext, noentry; 
+  f019 = est.gest_act, reverse, autonext, noentry; 
+  f020 = est.cate, reverse, autonext; 
+  f021 = est.cod_pad, reverse, autonext, noentry; 
+  f022 = est_adj.padre, reverse, autonext, noentry; 
+  f023 = est_adj.madre, reverse, autonext, noentry; 
+  f024 = est_adj.viveco, reverse, autonext; 
+  f025 = est_adj.llamar, reverse, autonext; 
+  f026 = est_adj.fingre, reverse, autonext; 
+  f027 = est.col_origen, reverse, autonext; 
+
+  d0   = formonly.descrip0, reverse;
+  d2   = formonly.descrip2, reverse;
+  d3   = formonly.descrip3, reverse;
+  d4   = formonly.descrip4, reverse;
+  d5   = formonly.descrip5, reverse;
+  d6   = formonly.descrip6, reverse;
+  d7   = formonly.descrip7, reverse;
+  d8   = formonly.descrip8, reverse;
+
+  d10  = formonly.descrip10, reverse;
+  d11  = formonly.descrip11, reverse;
+  d12  = formonly.descrip12, reverse;
+
+  v1   = formonly.opcion1, reverse;
+  v2   = formonly.opcion2, reverse;
+  v3   = formonly.opcion3, reverse;
+  v4   = formonly.opcion4, reverse;
+
+end
+
+instructions
+  delimiters "  "
+end
